@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1099</x>
+      <y>35</y>
+      <w>147</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>Project
+--
+-Comm: Communication
+-pt: List&lt;PT&gt;
+--
++Add PT 
++Remove PT
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>735</x>
+      <y>14</y>
+      <w>133</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>/AbstractClass/
+Communication
+--
+-IsConnected: bool
+-CommunicationType: string
+-PtAddress: string
+--
++Connect():bool
++Disconnect():bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>665</x>
+      <y>140</y>
+      <w>105</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>Ethernet
+--
+-PtIpAddress: string
+-Port: int
+--
++Connect():bool
++Disconnect():bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>826</x>
+      <y>140</y>
+      <w>105</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>Rs232
+--
+-PortName: string
+-Baudrate: long
+--
++Connect():bool
++Disconnect():bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>791</x>
+      <y>105</y>
+      <w>91</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>707</x>
+      <y>105</y>
+      <w>98</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>861</x>
+      <y>28</y>
+      <w>252</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+One Communication Object
+per Project</panel_attributes>
+    <additional_attributes>10.0;20.0;340.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1120</x>
+      <y>147</y>
+      <w>105</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>PT
+--
+-H200:GPS
+-MTi30:XsensMTi30
+-pan:Axis
+-tilt:Axis
+-PartNumber:String
+type:int
+Presets:List&lt;Preset&gt;
+numOfPresets:byte
+--
++methods()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>483</x>
+      <y>280</y>
+      <w>301</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>UnitConvertor - Static
+-
+PanEncoder: long
+TiltEncoder: long
+PanRatio: double
+TiltRatio: double
+PanSlowLoopSampling: double
+TiltSlowLoopSampling: double
+-
++PositionConvert(from:string, to:string, value:double):double
++SpeedConvert(from:string, to:string, value:double):double
++AccelerationConvert(from:string, to:string, value:double):double
++TimeConvert(from:string, to:string, value:double):double
++VoltageCMDConvert(from:string, to:string, value:double):double
++VoltageMeasureConvert(from:string, to:string, value:double):double
++CurrentConvert(from:string, to:string, value:double):double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>917</x>
+      <y>238</y>
+      <w>161</w>
+      <h>245</h>
+    </coordinates>
+    <panel_attributes>Axis
+--
+-name:string (pan or tilt)
+-id:byte	(1 or 2)
+-mer:MER
+-der:DER
+-srh:SRH
+-srl:SRL
+-PidPosition:PID Position
+-PidSpeed: PID Speed
+-PidCurrent: PID Current
+-NumOfEncoderLines:long
+-PeakCurrent:float
+-MotorTransmission:float
+-SlowLoopSampling:float
+-VdcMaxMeasurable:float
+-SetPoints:List&lt;SetPoint&gt;
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>399</x>
+      <y>532</y>
+      <w>147</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>MER Register
+--
+-CanBusError:bool
+-ShortCircuit:bool
+-InvalidSetupData:bool
+-ControlError:bool
+-SerialComError:bool
+-PositionWraparound:bool
+-LspActive:bool
+-LsnActive:bool
+-OverCurrent:bool
+-I2T:bool
+-OverTempMotor:bool
+-OverTempDrive:bool
+-OverVoltage:bool
+-UnderVoltage:bool
+-CommandError:bool
+-EnableInactive:bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>399</x>
+      <y>749</y>
+      <w>147</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>SRH Register
+--
+-Endinit:bool
+-OverPos1:bool
+-OverPos2:bool
+-OverPos3:bool
+-OverPos4:bool
+-AutorunEn:bool
+-LspEvent:bool
+-LsnEvent:bool
+-CaptureEvent:bool
+-TargetReachedSrh:bool
+-I2TMotor:bool
+-I2TDrive:bool
+-InGear:bool
+-InFreezeControl:bool
+-InCam:bool
+-FaultSrh:bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>532</y>
+      <w>147</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>DER Register
+--
+-TmlStackOverflow:bool
+-TmlStackUnderflow:bool
+-HomingUnavailable:bool
+-FuncUnavailable:bool
+-UpdIgnored:bool
+-CancelableCallIgnored:bool
+-SwLspActive:bool
+-SwLsnActive:bool
+-InvalidSCurve:bool
+-UpdIgnoredS:bool
+-EncoderBrokenWire:bool
+-StartModeFailed:bool
+-TmlHeartbeatIgnored:bool
+-SelfCheckError:bool
+-ENAHardwareError:bool
+-Reserved:bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>749</y>
+      <w>147</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>SRH Register
+--
+-ReadyToSwitchOn:bool
+-SwitchedOn:bool
+-OperationEn:bool
+-FaultSrl:bool
+-VoltageEn:bool
+-QuickStop:bool
+-SwitchOnDisabled:bool
+-HomingWarning:bool
+-HomingActive:bool
+-Remote:bool
+-TargetReachedSrl:bool
+-InternalLimitActive:bool
+-SetPointZero:bool
+-SlippageError:bool
+-EventOccured:bool
+-AxisOn:bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>511</y>
+      <w>133</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>STATUS REGISTERS</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>756</x>
+      <y>833</y>
+      <w>203</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>PID Current
+--
+-Kp:float
+-Kpi:float
+-SftKpi:float
+-Ki:float
+-Kii:float
+-SftKii:float
+--
++CalculateKpi(Kpi:float, SftKpi:float):float
++CalculateKii(Kii:float, SftKii:float):float
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>756</x>
+      <y>532</y>
+      <w>203</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>PID Postion
+--
+-Kp:float
+-Kpp:float
+-SftKpp:float
+-Ki:float
+-Kip:float
+-SftKip:float
+-Kd:float
+-Kdp:float
+SftKdp:float
+--
++CalculateKpp(Kpp:float, SftKpp:float):float
++CalculateKip(Kip:float, SftKip:float):float
++CalculateKdp(Kdp:float, SftKdp:float):float </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>756</x>
+      <y>707</y>
+      <w>203</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>PID Speed
+--
+-Kp:float
+-Kps:float
+-SftKps:float
+-Ki:float
+-Kis:float
+-SftKis:float
+--
++CalculateKps(Kps:float, SftKps:float):float
++CalculateKis(Kis:float, SftKis:float):float
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>273</y>
+      <w>147</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+</panel_attributes>
+    <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1043</x>
+      <y>175</y>
+      <w>91</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1169</x>
+      <y>105</y>
+      <w>21</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>994</x>
+      <y>735</y>
+      <w>161</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>XsensMTi30
+--
+-IsReadyIMU:bool
+-Roll:double
+-Pitch:double
+-Yaw:double
+-GyroX:double
+-GyroY:double
+-GyroZ:double
+--
+The reading methods are 
+implemented in the
+communication class. After
+reading the data we store
+it in the relevent component</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>994</x>
+      <y>532</y>
+      <w>161</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>GPS
+--
+-IsReadyGPS:bool
+-IsReadyGpsPos:bool
+-IsReadyGpsHead:bool
+-IsReadyGpsCalibrated:bool
+-Clock:String
+-Heading:double
+-Longitude:double
+-Latitude:double
+-Altitude:double
+-Satellites:byte
+--
+The reading methods are 
+implemented in the communication
+class. After reading the data we 
+store it in the relevent component</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1400</x>
+      <y>154</y>
+      <w>161</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>SLN_Protocol - Static
+--
+According to Excel document</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1218</x>
+      <y>147</y>
+      <w>196</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+</panel_attributes>
+    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1176</x>
+      <y>616</y>
+      <w>77</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Set Point GPS
+--
+Latitude:float
+Longiture:float
+Altitude:float
+Northing:float
+Easting:float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1176</x>
+      <y>532</y>
+      <w>77</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Set Point
+--
+point:Point
+name:String</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
